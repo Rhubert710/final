@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import validateUser from "../Utils/Validation";
 
@@ -8,14 +9,17 @@ const PostUser = ({ postUserData, setPostUser }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [mssg, setMssg] = useState("");
+  const [hasAccount, sethasAccount] = useState(false);
   const navigate = useNavigate();
 
+  const accountMap = {};
+
   return (
-    <div>
-      <h3>Create New User</h3>
-      <br></br>
-      <label>First Name</label>
-      <br></br>
+    <div id="loginDiv">
+      <h4 style={{marginTop:'0px'}}>
+        {(hasAccount) ? 'Login' : 'Create New User'}
+      </h4>
+      <div>First Name</div>
       <input
         type="text"
         value={firstName}
@@ -23,7 +27,7 @@ const PostUser = ({ postUserData, setPostUser }) => {
           setFirstName(e.target.value);
         }}
       ></input>
-      <br></br>
+      <br/><br/>
       <label>Last Name</label>
       <br></br>
       <input
@@ -33,7 +37,7 @@ const PostUser = ({ postUserData, setPostUser }) => {
           setLastName(e.target.value);
         }}
       ></input>
-      <br></br>
+      <br/><br/>
       <label>Email</label>
       <br></br>
       <input
@@ -43,7 +47,13 @@ const PostUser = ({ postUserData, setPostUser }) => {
           setEmail(e.target.value);
         }}
       ></input>
-      <br></br>
+      <br/><br/>
+      <div>Account type</div><br/>
+        <input type="radio" name="userRole" value="Management"></input>
+        <label style={{marginRight:'12px'}} >Management</label>
+        <input type="radio" name="userRole" value="staff"></input>
+        <label>staff</label>
+        <br/>
       <button
         onClick={async () => {
           const validateUserObj = validateUser({
@@ -68,10 +78,24 @@ const PostUser = ({ postUserData, setPostUser }) => {
             }
           }
         }}
+        style={{
+          marginTop:'24px',
+          color:'white', 
+          backgroundColor:'#1b417d',
+          padding:'8px',
+        }}
       >
         Submit
       </button>
-      <br />
+      <br /><br/>
+
+      <div
+        style={{color:'rgb(86,26,139)',cursor:'pointer'}}
+        onClick={()=>{
+          sethasAccount(!hasAccount)
+        }}
+          > {(hasAccount)? 'Create account' : 'already have an account? Login'}
+      </div>
       <div>{mssg}</div>
     </div>
   );

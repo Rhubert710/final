@@ -1,43 +1,31 @@
 import React, { useState } from "react";
+import Tasks from "../Components/Tasks";
 
-const UserList = ({userList,}) => {
+const UserList = ({userList}) => {
 
   return (
-    <div>
-      <div>
-        <h2>User List: </h2>
-        <div id="users">
+    <div style={{display:'flex'}}>
+      
+        <div id="users" style={{flex:1}}>
+          
+          
           {userList.map((user) => {
+            
             return (
               <div key={user.id}>
+                <div>Logged in as:</div>
+                <div>{user.firstName} {user.lastName} </div>
+                <div>{user.email}</div>
                 <br />
-
-                <div>
-                  First Name: 
-                  {user.firstName}
-                </div>
-                <br />
-
-                <div>
-                  Last Name: 
-                  {user.lastName}
-                </div>
-                <br />
-
-                <div>
-                  Email: 
-                  {user.email}
-                </div>
-                <br/>
-            
-                <div>//////////////////////////////////////////////////</div>
               </div>
             );
+
           })}
-        </div>
+          </div>
+          <div style={{flex:1}}>
+            <Tasks/>
+          </div>
       </div>
- 
-    </div>
   );
 };
 

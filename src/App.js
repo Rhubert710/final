@@ -7,14 +7,13 @@ import HomePage from "./Pages/HomePage";
 import PostUser from "./Pages/PostUser";
 import NavBar from "./Components/NavBar";
 import UserList from "./Pages/UserList";
-import Dog from "./Pages/Dog";
 
 
-const urlEndpoint = "https://deploybackend-robert-hubert.herokuapp.com";
+
+// const urlEndpoint = "https://deploybackend-robert-hubert.herokuapp.com";
+const urlEndpoint = "http://localhost:4000";
 function App() {
-  const [clientMessage, setClientMessage] = useState("");
-  const [serverMessage, setServerMessage] = useState("");
-  const [dogImage, setdogImage] = useState("");
+
   const [userList, setUserlist] = useState([]);
   const [postUser, setPostUser] = useState(false);
 
@@ -44,30 +43,6 @@ function App() {
     return responseJSON;
   };
 
-  const sendRecieveMessage = async () => {
-    const response = await fetch(`${urlEndpoint}/post-message`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ clientMessage }),
-    });
-    const responseJSON = await response.json();
-    setServerMessage(responseJSON.serverMessage);
-  };
-
-  const getdogImage = async () => {
-    const response = await fetch(`${urlEndpoint}/get-dog`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseJSON = await response.json();
-    console.log(responseJSON.serverMessage);
-    setdogImage(responseJSON.serverMessage);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -79,16 +54,11 @@ function App() {
               index
               element={
                 <HomePage
-                  clientMessage={clientMessage}
-                  setClientMessage={setClientMessage}
-                  serverMessage={serverMessage}
-                  sendRecieveMessage={sendRecieveMessage}
-                  getdogImage={getdogImage}
-                  dogImage={dogImage}
                   userList={userList}
                 />
               }
             />
+            
 
             <Route
               path="/post-user"
@@ -109,17 +79,9 @@ function App() {
               }
             />
 
-            <Route
-              path="dogs"
-              element={
-                <Dog
-                getdogImage={getdogImage}
-                dogImage={dogImage}
-                />
-              }
-            />
+          
 
-          </Route>
+         </Route>
         </Routes>
       </header>
     </div>

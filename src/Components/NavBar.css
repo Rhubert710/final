@@ -17,8 +17,14 @@
   width: 100vw;
   justify-content: space-around;
   font-size: 5vmin;
+  text-decoration: none;
+  color: inherit;
   }
 
-  .link{
-    font-size: large;
+  #links>*{
+    padding-bottom: 1ch;
+
+    text-decoration: none;
+    color: inherit;
+    
   }

@@ -1,56 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link} from "react-router-dom";
 
-const HomePage = ({
-  clientMessage,
-  setClientMessage,
-  serverMessage,
-  sendRecieveMessage,
-  getdogImage,
-  dogImage,
-  userList,
-}) => {
-  const [inputValue, setInputValue] = useState("");
+const HomePage = () => {
 
   return (
-    <div>
-      <h2>Home Page</h2>
-      <br />
+    <div style={{textAlign:'center'}}>
 
-      <h3>Client Message: </h3>
-      <div className="messageContainer">{clientMessage}</div>
-      <br />
+      <h2>Welcome to Task Tree!</h2>
 
-      <h3>Server Message: </h3>
-      <div className="messageContainer">{serverMessage}</div>
-      <br />
-
-      <div>Enter Message</div>
-      <input
-      type={'text'}
-        value={inputValue}
-        onChange={(e) => {
-          const dateTime = new Date();
-          const newClientMessage = `"${
-            e.target.value
-          }" at time ${dateTime.toString()}`;
-          setClientMessage(newClientMessage);
-          setInputValue(e.target.value);
-        }}
-      ></input>
+      <p>Task Tree is a staff management tool to help you </p>
+      <p>be more organized and productive!</p>
 
       <button
-        id="sendMessageButton"
-        type="submit"
-        onClick={() => {
-          sendRecieveMessage();
-          setInputValue("");
+        style={{
+          color:'white', 
+          backgroundColor:'#174ea6',
+          fontSize:'large',
+          padding:'8px',
+          marginTop:'24px',
         }}
       >
-        Submit
+        <Link style={{textDecoration: 'none', color: 'inherit'}} to="/post-user">Get Started!</Link>
       </button>
-      <br />
-      <br />
-      
     </div>
   );
 };

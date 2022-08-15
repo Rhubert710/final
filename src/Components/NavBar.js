@@ -9,26 +9,14 @@ const NavBar = () => {
     <div id="navBar">
       <nav>
       <div id='title'>
-            <img src={logo} className="App-logo" alt="logo" />
-            <span>Heroku Deploy</span>
-          </div>
-        <div id="links">
-          <div>
-            <Link to="/">Home</Link>
-          </div>
-          <br />
-          <div>
-            <Link to="/post-user">Create New User</Link>
-          </div>
-          <div>
-            <Link to="/user-list">User List</Link>
-          </div>
-          <br />
-          <div>
-            <Link to="/dogs">Dogs</Link>
-          </div>
-          <br />
+            <span>🌲 TaskTree</span>
         </div>
+        <div id="links">
+            <Link to="/">Home</Link>
+            <Link to="/user-list">Tasks</Link>
+            <Link to="/post-user">Sign up/ Login</Link>
+            {/* <Link to="/post-user">Sign up/ Login</Link> */}
+      </div>
       </nav>
       <br />
       <Outlet />
